@@ -1,0 +1,52 @@
+# Student Performance Management System
+
+class Student:
+    def __init__(self, name, roll_no, marks):
+        self.name = name
+        self.roll_no = roll_no
+        self.marks = marks
+
+    def total_marks(self):
+        return sum(self.marks)
+
+    def percentage(self):
+        return self.total_marks() / len(self.marks)
+
+    def grade(self):
+        p = self.percentage()
+        if p >= 90:
+            return "A+"
+        elif p >= 80:
+            return "A"
+        elif p >= 70:
+            return "B"
+        elif p >= 60:
+            return "C"
+        elif p >= 50:
+            return "D"
+        else:
+            return "Fail"
+
+    def display(self):
+        print("\n--- Student Performance ---")
+        print("Name       :", self.name)
+        print("Roll No    :", self.roll_no)
+        print("Marks      :", self.marks)
+        print("Total      :", self.total_marks())
+        print("Percentage :", self.percentage())
+        print("Grade      :", self.grade())
+
+
+# Main Program
+name = input("Enter student name: ")
+roll = input("Enter roll number: ")
+
+marks = []
+subjects = int(input("Enter number of subjects: "))
+
+for i in range(subjects):
+    m = int(input(f"Enter marks for subject {i+1}: "))
+    marks.append(m)
+
+student = Student(name, roll, marks)
+student.display()
